@@ -1,146 +1,154 @@
 [
     {
-        "question": "Hi",
+        "category": "Greeting",
+        "patterns": [
+            "hi",
+            "hello",
+            "hey",
+            "good morning",
+            "good afternoon",
+            "good evening"
+        ],
         "answer": "Hello! Welcome to our Customer Support. How can I assist you today?"
     },
     {
-        "question": "Hello",
-        "answer": "Hello! Welcome to our Customer Support. How can I assist you today?"
-    },
-    {
-        "question": "Hey",
-        "answer": "Hello! Welcome to our Customer Support. How can I assist you today?"
-    },
-    {
-        "question": "Good Morning",
-        "answer": "Good morning! How can I assist you today?"
-    },
-    {
-        "question": "Good Afternoon",
-        "answer": "Good afternoon! How can I help you today?"
-    },
-    {
-        "question": "Good Evening",
-        "answer": "Good evening! How may I assist you today?"
-    },
-    {
-        "question": "Bye",
+        "category": "Farewell",
+        "patterns": [
+            "bye",
+            "goodbye",
+            "see you",
+            "thank you",
+            "thanks"
+        ],
         "answer": "Thank you for contacting us. Have a great day!"
     },
     {
-        "question": "Thank You",
-        "answer": "You're welcome! Happy to help."
-    },
-    {
-        "question": "How do I reset my password?",
+        "category": "Password Reset",
+        "patterns": [
+            "forgot password",
+            "reset password",
+            "password reset",
+            "cannot login",
+            "can't login",
+            "unable to login",
+            "account locked",
+            "login problem",
+            "login issue"
+        ],
         "answer": "Go to Settings > Security > Reset Password."
     },
     {
-        "question": "I forgot my password.",
-        "answer": "Go to Settings > Security > Reset Password."
-    },
-    {
-        "question": "I can't login to my account.",
-        "answer": "Go to Settings > Security > Reset Password."
-    },
-    {
-        "question": "I cannot login to my account.",
-        "answer": "Go to Settings > Security > Reset Password."
-    },
-    {
-        "question": "What is your refund policy?",
+        "category": "Refund",
+        "patterns": [
+            "refund",
+            "return product",
+            "return item",
+            "money back",
+            "refund policy"
+        ],
         "answer": "Products can be returned within 7 days of delivery."
     },
     {
-        "question": "Can I return my product?",
-        "answer": "Products can be returned within 7 days of delivery."
-    },
-    {
-        "question": "How long does shipping take?",
+        "category": "Shipping",
+        "patterns": [
+            "shipping",
+            "delivery",
+            "shipping time",
+            "delivery time",
+            "when will my order arrive"
+        ],
         "answer": "Standard shipping takes 3 to 5 business days."
     },
     {
-        "question": "When will my order be delivered?",
-        "answer": "Standard shipping takes 3 to 5 business days."
+        "category": "Order Tracking",
+        "patterns": [
+            "track order",
+            "where is my order",
+            "order status",
+            "track my package"
+        ],
+        "answer": "Go to 'My Orders' and click 'Track Order' to view your latest order status."
     },
     {
-        "question": "How can I contact customer support?",
-        "answer": "You can contact us via email at support@company.com or call +91-9876543210."
+        "category": "Order Cancellation",
+        "patterns": [
+            "cancel order",
+            "cancel my order",
+            "order cancellation"
+        ],
+        "answer": "Orders can be cancelled before they are shipped."
     },
     {
-        "question": "How do I contact support?",
-        "answer": "You can contact us via email at support@company.com or call +91-9876543210."
+        "category": "Address Update",
+        "patterns": [
+            "change address",
+            "update address",
+            "delivery address",
+            "change delivery address"
+        ],
+        "answer": "You can update your delivery address before your order is shipped."
     },
     {
-        "question": "What payment methods are accepted?",
+        "category": "Damaged Product",
+        "patterns": [
+            "damaged product",
+            "broken product",
+            "defective item",
+            "received damaged item"
+        ],
+        "answer": "Please contact customer support within 48 hours and upload photos of the damaged product."
+    },
+    {
+        "category": "Payment",
+        "patterns": [
+            "payment methods",
+            "payment options",
+            "upi",
+            "credit card",
+            "debit card",
+            "wallet"
+        ],
         "answer": "We accept UPI, credit cards, debit cards, net banking, and digital wallets."
     },
     {
-        "question": "Can I pay using UPI?",
-        "answer": "Yes. We accept UPI, credit cards, debit cards, net banking, and digital wallets."
+        "category": "Payment Failed",
+        "patterns": [
+            "payment failed",
+            "money deducted",
+            "transaction failed",
+            "payment issue"
+        ],
+        "answer": "If your payment failed but the amount was deducted, it will usually be refunded within 5 to 7 business days."
     },
     {
-        "question": "Can I cancel my order?",
-        "answer": "Orders can be cancelled before they are shipped."
-    },
-    {
-        "question": "How do I cancel my order?",
-        "answer": "Orders can be cancelled before they are shipped."
-    },
-    {
-        "question": "Where is my order?",
-        "answer": "Go to 'My Orders' and click 'Track Order' to view the latest status."
-    },
-    {
-        "question": "How can I track my order?",
-        "answer": "Go to 'My Orders' and click 'Track Order' to view the latest status."
-    },
-    {
-        "question": "Do you offer international shipping?",
-        "answer": "Currently, we ship only within India."
-    },
-    {
-        "question": "Can you ship outside India?",
-        "answer": "Currently, we ship only within India."
-    },
-    {
-        "question": "How do I change my delivery address?",
-        "answer": "You can change your delivery address before your order is shipped."
-    },
-    {
-        "question": "Can I update my delivery address?",
-        "answer": "You can change your delivery address before your order is shipped."
-    },
-    {
-        "question": "I received a damaged product.",
-        "answer": "Please contact customer support within 48 hours and upload photos of the damaged product."
-    },
-    {
-        "question": "My product is broken.",
-        "answer": "Please contact customer support within 48 hours and upload photos of the damaged product."
-    },
-    {
-        "question": "How do I create an account?",
+        "category": "Account Registration",
+        "patterns": [
+            "create account",
+            "register",
+            "sign up",
+            "new account"
+        ],
         "answer": "Click on 'Sign Up', enter your details, verify your email or phone number, and your account will be created."
     },
     {
-        "question": "How can I register?",
-        "answer": "Click on 'Sign Up', enter your details, verify your email or phone number, and your account will be created."
+        "category": "International Shipping",
+        "patterns": [
+            "international shipping",
+            "ship outside india",
+            "deliver outside india",
+            "foreign shipping"
+        ],
+        "answer": "Currently, we ship only within India."
     },
     {
-        "question": "My payment failed.",
-        "answer": "If your payment failed but the amount was deducted, it will usually be refunded within 5–7 business days."
-    },
-    {
-        "question": "Money was deducted but payment failed.",
-        "answer": "If your payment failed but the amount was deducted, it will usually be refunded within 5–7 business days."
-    },
-    {
-        "question": "Can I talk to a human agent?",
-        "answer": "You can connect with one of our customer support executives via email or phone during business hours."
-    },
-    {
-        "question": "I want to speak to customer support.",
-        "answer": "You can connect with one of our customer support executives via email or phone during business hours."
+        "category": "Contact Support",
+        "patterns": [
+            "contact support",
+            "customer support",
+            "human agent",
+            "talk to support",
+            "call customer care"
+        ],
+        "answer": "You can contact us via email at support@company.com or call +91-9876543210 during business hours."
     }
 ]
