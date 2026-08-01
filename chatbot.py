@@ -28,30 +28,14 @@ knowledge_base = load_knowledge_base()
 # search for the best matching answer
 def find_best_answer(user_question):
 
-    user_words = set(user_question.lower().split())
-
-    best_match = None
-    highest_score = 0
+    user_question = user_question.lower()
 
     for item in knowledge_base:
 
-        score = 0
-
         for pattern in item["patterns"]:
 
-            pattern_words = set(pattern.lower().split())
-
-            matched_words = pattern_words.intersection(user_words)
-
-            score += len(matched_words)
-
-        if score > highest_score:
-            highest_score = score
-            best_match = item
-
-    # minimum score required
-    if highest_score >= 2:
-        return best_match
+            if pattern.lower() in user_question:
+                return item
 
     return None
 
