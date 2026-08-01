@@ -1,63 +1,107 @@
 import json
+import os
 
-# loading the memory (knowledge base)
+from dotenv import load_dotenv
+from google import genai
+
+# Load Environment Variables
+load_dotenv()
+
+API_KEY = os.getenv("GEMINI_API_KEY")
+MODEL_NAME = os.getenv("MODEL_NAME")
+if not API_KEY:
+    raise ValueError("GEMINI_API_KEY not found in .env file.")
+client = genai.Client(api_key=API_KEY)
+
+
+# Load Knowledge Base
 def load_knowledge_base():
-    
-    """Load all the FAQs from the JSON file. """
-    
-    with open("knowledge_base.json", "r") as file:
+    """
+    Load all FAQs from the knowledge base.
+    """
+    with open("knowledge_base.json", "r", encoding="utf-8") as file:
         return json.load(file)
-    
-# searching for the best relevent answer
+
+
+# Load once when the program starts
+knowledge_base = load_knowledge_base()
+
+
+# Search Knowledge Base
+
 def find_best_answer(user_question):
-    
-    """Find the most relevant answer using keyword matching."""
-    
-    knowledge = load_knowledge_base()
+    """
+    Search the knowledge base using keyword matching.
+    """
     user_question = user_question.lower()
-    for item in knowledge:
-        if any(word in item["question"].lower() for word in user_question.split()):
-            return item["answer"]
+    for item in knowledge_base:
+        for pattern in item["patterns"]:
+            if pattern.lower() in user_question:
+                return item["answer"]
     return None
 
 
 
+# Prompt Builder
+def build_prompt(user_question, company_answer):
+    """
+    Create the prompt for Gemini.
+    """
+    prompt = f"""
+You are a helpful and professional customer support assistant.
+Use ONLY the company information provided below.
+If the answer is unavailable, reply:
+"Sorry, I couldn't find information related to your question."
+Company Information:
+{company_answer}
+Customer Question:
+{user_question}
+Give a short, polite and helpful response.
+"""
+    return prompt
+
+
+# Gemini API
+def ask_gemini(prompt):
+    """
+    Send the prompt to Gemini.
+    """
+    response = client.models.generate_content(
+        model=MODEL_NAME,
+        contents=prompt
+    )
+    return response.text
 
 
 
+# Main Chatbot Function
+def get_response(user_question):
+    """
+    Complete chatbot workflow.
+    """
+    company_answer = find_best_answer(user_question)
+    if company_answer is None:
+        return "Sorry, I couldn't find information related to your question."
+    prompt = build_prompt(user_question, company_answer)
+    response = ask_gemini(prompt)
+    return response
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# main function
+# Test
 if __name__ == "__main__":
 
-    question = input("Ask something: ")
-    answer = find_best_answer(question)
+    print("=" * 50)
+    print(" Customer Support Chatbot ")
+    print("=" * 50)
 
-    if answer:
-        print(answer)
-    else:
-        print("Sorry, I couldn't find an answer.")
+    while True:
+
+        question = input("\nYou : ")
+
+        if question.lower() in ["exit", "quit"]:
+            print("\nChatbot : Thank you! Have a great day.")
+            break
+
+        response = get_response(question)
+
+        print(f"\nChatbot : {response}")
