@@ -1,0 +1,42 @@
+[
+    {
+        "question": "How do I reset my password?",
+        "answer": "Go to Settings > Security > Reset Password."
+    },
+    {
+        "question": "What is your refund policy?",
+        "answer": "Products can be returned within 7 days of delivery."
+    },
+    {
+        "question": "How long does shipping take?",
+        "answer": "Standard shipping takes 3–5 business days."
+    },
+    {
+        "question": "How can I contact customer support?",
+        "answer": "You can contact us via email at support@company.com or call +91-9876543210."
+    },
+    {
+        "question": "What payment methods are accepted?",
+        "answer": "We accept UPI, credit cards, debit cards, net banking, and wallets."
+    },
+    {
+        "question": "Can I cancel my order?",
+        "answer": "Orders can be cancelled before they are shipped."
+    },
+    {
+        "question": "How can I track my order?",
+        "answer": "Go to My Orders and click Track Order."
+    },
+    {
+        "question": "Do you offer international shipping?",
+        "answer": "Currently, we ship only within India."
+    },
+    {
+        "question": "How do I change my delivery address?",
+        "answer": "You can change your address before your order is shipped from My Orders."
+    },
+    {
+        "question": "What should I do if I receive a damaged product?",
+        "answer": "Contact customer support within 48 hours and upload photos of the damaged product."
+    }
+]
