@@ -41,23 +41,31 @@ def find_best_answer(user_question):
 
 
 # build prompt
-def build_prompt(user_question, company_info):
+def build_prompt(user_question, company_info, chat_history):
 
-    prompt = f"""
+    history_text = ""
+
+    for message in chat_history:
+        history_text += f"{message['role']}: {message['content']}\n"
+
+    return f"""
 You are a professional customer support executive for an online shopping platform.
 
-Your responsibility is to answer customer questions using ONLY the company information provided below.
+Your job is to answer customer questions using the company information provided below.
 
 Guidelines:
 
 - Answer naturally like a real customer support executive.
-- Keep the response short (2-4 sentences).
+- Keep the response short and clear.
+- Use the conversation history when the customer asks a follow-up question.
 - Do not repeat the customer's question.
-- Do not start every answer with "Hello", "Certainly", or "Sure".
-- Do not end every response with "Please let us know if you need further assistance."
-- Never make up information.
-- If the company information is not enough, say:
+- Do not invent information.
+- Only use information supported by the company information.
+- If the information is not available, say:
   "Sorry, I couldn't find information related to your question."
+
+Conversation History:
+{history_text}
 
 Category:
 {company_info["category"]}
@@ -65,11 +73,9 @@ Category:
 Company Information:
 {company_info["answer"]}
 
-Customer Question:
+Current Customer Question:
 {user_question}
 """
-
-    return prompt
 
 
 # send prompt to gemini
@@ -84,19 +90,25 @@ def ask_gemini(prompt):
 
 
 # chatbot workflow
-def get_response(user_question):
+def get_response(user_question, chat_history=None):
+
+    if chat_history is None:
+        chat_history = []
 
     company_info = find_best_answer(user_question)
 
     if company_info is None:
         return "Sorry, I couldn't find information related to your question."
 
-    prompt = build_prompt(user_question, company_info)
+    prompt = build_prompt(
+        user_question,
+        company_info,
+        chat_history
+    )
 
     response = ask_gemini(prompt)
 
     return response
-
 
 # terminal testing
 if __name__ == "__main__":
