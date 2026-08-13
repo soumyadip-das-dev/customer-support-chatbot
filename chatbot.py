@@ -95,8 +95,22 @@ def get_response(user_question, chat_history=None):
     if chat_history is None:
         chat_history = []
 
+    # first try the current question
     company_info = find_best_answer(user_question)
 
+    # if current question does not match, check previous user question
+    if company_info is None:
+
+        previous_questions = [
+            message["content"]
+            for message in chat_history
+            if message["role"] == "user"
+        ]
+
+        if previous_questions:
+            company_info = find_best_answer(previous_questions[-1])
+
+    # return fallback if nothing matches
     if company_info is None:
         return "Sorry, I couldn't find information related to your question."
 
@@ -106,9 +120,7 @@ def get_response(user_question, chat_history=None):
         chat_history
     )
 
-    response = ask_gemini(prompt)
-
-    return response
+    return ask_gemini(prompt)
 
 # terminal testing
 if __name__ == "__main__":
